@@ -16,7 +16,7 @@ typedef uint16_t dbyte;
 #define FLAG_N 0x80
 
 typedef struct {
-    ubyte AC;    // Accumulator
+    ubyte AR;    // Accumulator
     ubyte XR;    // X register
     ubyte YR;    // Y register
     dbyte PC;    // Program Counter
@@ -152,7 +152,7 @@ void and_zero_page(CPU* cpu, ubyte address)
 
 void and_absolute(CPU* cpu, ubyte adr1, ubyte adr2)
 {
-    cpu->A &= read_memory((adr1 << 8) | adr2);
+    cpu->AR &= read_memory((adr1 << 8) | adr2);
     update_dynamic_flags(cpu, (byte)cpu->AR, 0, 0);
 }
 
